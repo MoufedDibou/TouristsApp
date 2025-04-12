@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tourists_guide/cubit/app_cubit.dart';
+import 'package:tourists_guide/cubit/cubit_app_logics.dart';
 import 'package:tourists_guide/pages/detail_page.dart';
 import 'package:tourists_guide/pages/navpages/home_page.dart';
 import 'package:tourists_guide/pages/navpages/main_page.dart';
+import 'package:tourists_guide/pages/register.dart';
 import 'package:tourists_guide/pages/welcome_page.dart';
 
 void main() {
@@ -34,7 +38,11 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home:DetailPage(),
+      home:BlocProvider<AppCubit>
+      (create: (context)=> AppCubit(),
+      child: CubitAppLogics(),
+   
+      ),
     );
   }
 }
